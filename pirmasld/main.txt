@@ -1,0 +1,83 @@
+/*
+ * MRlab1.c
+ *
+ * Created: 2019-02-15 10:54:31
+ * Author : 20163098
+ */ 
+#define F_CPU 16000000
+#include <avr/io.h>
+#include <util/delay.h>
+
+
+
+int main(void)
+{
+	DDRA = 0;
+	DDRB = 255;
+	int diod[]={1, 3, 5, 9, 17};
+	int i = 0;
+	int j = 0;
+	int h = 0b01010101;
+	
+	PORTA=255;
+	DDRC = 255;
+	DDRA &= ~(1<<3); // Nustatomas krypties registras á ávestá
+	DDRA &= ~(1<<4); // Nustatomas krypties registras á ávestá
+	PORTA|=(1<<3);
+	PORTA|=(1<<4);
+	uint8_t olda = PINA;
+    /* Replace with your application code */
+    while (1) 
+    {
+// 		if(i==5){
+// 			i=0;
+// 		}
+// 		PORTA = diod[i];
+// 		i=i+1;
+		
+		
+// 		if(j==17){
+// 			j=0;
+// 		}
+// 		if(j<6){
+// 			if(j%2>0){
+// 				h = h << 1;
+// 			} else {
+// 				h = h >> 1;
+// 			}
+// 			PORTB = h;
+// 		}
+// 		if(j>6&&j<13){
+// 			if(j%2>0){
+// 				PORTB = 255;
+// 			} else {
+// 				PORTB = 0;
+// 			}
+// 		}
+// 		if(j>12){
+// 			if(j%2>0){
+// 				PORTB = 255 ^ 0b00001111;
+// 				} else {
+// 				PORTB = 255 ^ 0b11110000;
+// 			}
+// 		}
+// 		j=j+1;
+// 		
+		if ( !(olda&(1<<3)) != !(PINA & (1<<3)) ) // Stebima PC3 iðvado signalo lygis
+		{
+			PORTC=PORTC+1;
+			olda=PINA;
+		}
+		if ( !(olda&(1<<4)) != !(PINA & (1<<4)) ) // Stebima PC4 iðvado signalo lygis
+		{
+			PORTC=PORTC-1;
+			olda=PINA;
+		}
+		
+	/*	_delay_ms(500);*/
+		
+		
+		
+    }
+}
+

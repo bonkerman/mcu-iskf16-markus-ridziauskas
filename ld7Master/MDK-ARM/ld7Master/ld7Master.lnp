@@ -1,0 +1,27 @@
+--cpu=Cortex-M4.fp
+"ld7master\startup_stm32f407xx.o"
+"ld7master\main.o"
+"ld7master\stm32f4xx_it.o"
+"ld7master\stm32f4xx_hal_msp.o"
+"ld7master\stm32f4xx_hal_i2c.o"
+"ld7master\stm32f4xx_hal_i2c_ex.o"
+"ld7master\stm32f4xx_hal_tim.o"
+"ld7master\stm32f4xx_hal_tim_ex.o"
+"ld7master\stm32f4xx_hal_rcc.o"
+"ld7master\stm32f4xx_hal_rcc_ex.o"
+"ld7master\stm32f4xx_hal_flash.o"
+"ld7master\stm32f4xx_hal_flash_ex.o"
+"ld7master\stm32f4xx_hal_flash_ramfunc.o"
+"ld7master\stm32f4xx_hal_gpio.o"
+"ld7master\stm32f4xx_hal_dma_ex.o"
+"ld7master\stm32f4xx_hal_dma.o"
+"ld7master\stm32f4xx_hal_pwr.o"
+"ld7master\stm32f4xx_hal_pwr_ex.o"
+"ld7master\stm32f4xx_hal_cortex.o"
+"ld7master\stm32f4xx_hal.o"
+"ld7master\stm32f4xx_hal_exti.o"
+"ld7master\system_stm32f4xx.o"
+--library_type=microlib --strict --scatter "ld7Master\ld7Master.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "ld7Master.map" -o ld7Master\ld7Master.axf
